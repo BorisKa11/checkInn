@@ -56,6 +56,12 @@
     }
 
     function checkLastINN($inn) {
+		if (!is_dir(DIR . '/checked')) {
+			mkdir(DIR . '/checked');
+			chmod(DIR . '/checked', 0775);
+			return false;
+		}
+		
         if (!is_file(DIR . '/checked/' . $inn . '.txt'))
             return false;
 
